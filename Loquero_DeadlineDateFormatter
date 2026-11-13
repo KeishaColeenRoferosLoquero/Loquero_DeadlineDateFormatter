@@ -1,0 +1,38 @@
+#Version 1	Initial version - basic input and output	The program asks for inputs and displays simple output without date formatting.
+
+event = input("Enter event title: ")
+year = int(input("Enter year: "))
+month = int(input("Enter month: "))
+day = int(input("Enter day: "))
+
+print("nFormatted Output")
+print("Event", event.upper())
+print("Year", year)
+print("Month.", month)
+print("Day", day)
+
+#Version 2	Added date formatting	The program displays the event date in a readable format using a date/time feature.
+
+from datetime import date
+import calendar
+
+title = input("Enter event title: ")
+y = int(input("Enter year: "))
+m = int(input("Enter month: "))
+d = int(input("Enter day: "))
+
+event = date(y, m, d)
+month_str = calendar.month_name[event.month]
+weekday_str = calendar.day_name[event.weekday()]
+
+output_lines = [
+    "\nFormatted Output:",
+    f"Event: {title.upper()}",
+    f"Date: {month_str} {event.day}, {event.year}",
+    f"Year: {event.year}",
+    f"Month: {month_str}",
+    f"Day: {event.day}",
+    f"Weekday: {weekday_str}"
+]
+
+print("\n".join(output_lines))
